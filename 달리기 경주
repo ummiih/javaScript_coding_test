@@ -1,0 +1,18 @@
+function solution(players, callings) {
+    let rank = {}
+    players.forEach((player, index) => { rank[player] = index })
+    callings.forEach((calling) => {
+        winnerIndex = rank[calling]
+        loserIndex = rank[calling] - 1
+        loserName = players[loserIndex]
+        
+        rank[calling] -= 1
+        rank[players[loserIndex]] += 1
+        
+        players[loserIndex] = players[winnerIndex]
+        players[winnerIndex] = loserName
+
+        
+    })
+    return players
+}
